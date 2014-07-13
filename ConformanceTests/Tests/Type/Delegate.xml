@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="Delegate" type="declaration" description="7.10 Delegates">
+  <!-- Invalid delegates -->
+  <test>
+    <code>Delegate</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="9">
+        <Delegate line="1" col="1" />
+        <SimpleName isBad="True" startLine="1" startCol="9" endLine="1" endCol="9" escaped="False" />
+      </DelegateSubDeclaration>
+    </result>
+    <errors>
+      <ExpectedSubOrFunction startLine="1" startCol="9" endLine="1" endCol="9">error 104 (9,1) - (9,1): 'Sub' or 'Function' expected.</ExpectedSubOrFunction>
+    </errors>
+  </test>
+  <test>
+    <code>Delegate Foo</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="13">
+        <Delegate line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="13" escaped="False">Foo</SimpleName>
+      </DelegateSubDeclaration>
+    </result>
+    <errors>
+      <ExpectedSubOrFunction startLine="1" startCol="10" endLine="1" endCol="13">error 104 (10,1) - (13,1): 'Sub' or 'Function' expected.</ExpectedSubOrFunction>
+    </errors>
+  </test>
+  <test>
+    <code>Overridable Delegate Sub Foo()</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="31">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="13">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="13" type="Overridable" />
+        </ModifierCollection>
+        <Delegate line="1" col="13" />
+        <Sub line="1" col="22" />
+        <SimpleName startLine="1" startCol="26" endLine="1" endCol="29" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="29" endLine="1" endCol="31">
+          <RightParenthesis line="1" col="30" />
+        </ParameterCollection>
+      </DelegateSubDeclaration>
+    </result>
+    <errors>
+      <InvalidModifier startLine="1" startCol="1" endLine="1" endCol="13">error 94 (1,1) - (13,1): Modifier is not valid on this declaration type.</InvalidModifier>
+    </errors>
+  </test>
+  <test>
+    <code>Delegate &lt;a&gt; Sub Foo()</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="23">
+        <Delegate line="1" col="1" />
+        <SimpleName isBad="True" startLine="1" startCol="10" endLine="1" endCol="11" escaped="False" />
+        <ParameterCollection startLine="1" startCol="21" endLine="1" endCol="23">
+          <RightParenthesis line="1" col="22" />
+        </ParameterCollection>
+      </DelegateSubDeclaration>
+    </result>
+    <errors>
+      <ExpectedSubOrFunction startLine="1" startCol="10" endLine="1" endCol="11">error 104 (10,1) - (11,1): 'Sub' or 'Function' expected.</ExpectedSubOrFunction>
+    </errors>
+  </test>
+  <test>
+    <code>Delegate Public Sub Foo()</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="26">
+        <Delegate line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="16" escaped="False">Public</SimpleName>
+        <ParameterCollection startLine="1" startCol="24" endLine="1" endCol="26">
+          <RightParenthesis line="1" col="25" />
+        </ParameterCollection>
+      </DelegateSubDeclaration>
+    </result>
+    <errors>
+      <ExpectedSubOrFunction startLine="1" startCol="10" endLine="1" endCol="16">error 104 (10,1) - (16,1): 'Sub' or 'Function' expected.</ExpectedSubOrFunction>
+    </errors>
+  </test>
+  <test>
+    <code>Delegate Public Sub</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="20">
+        <Delegate line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="16" escaped="False">Public</SimpleName>
+      </DelegateSubDeclaration>
+    </result>
+    <errors>
+      <ExpectedSubOrFunction startLine="1" startCol="10" endLine="1" endCol="16">error 104 (10,1) - (16,1): 'Sub' or 'Function' expected.</ExpectedSubOrFunction>
+    </errors>
+  </test>
+  <test>
+    <code>Delegate Public Function</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="25">
+        <Delegate line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="16" escaped="False">Public</SimpleName>
+      </DelegateSubDeclaration>
+    </result>
+    <errors>
+      <ExpectedSubOrFunction startLine="1" startCol="10" endLine="1" endCol="16">error 104 (10,1) - (16,1): 'Sub' or 'Function' expected.</ExpectedSubOrFunction>
+    </errors>
+  </test>
+  <!-- Valid Delegates -->
+  <test>
+    <code>Public Private Protected Friend Shadows Delegate Sub Foo</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="57">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="41">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="8" type="Public" />
+          <Modifier startLine="1" startCol="8" endLine="1" endCol="16" type="Private" />
+          <Modifier startLine="1" startCol="16" endLine="1" endCol="26" type="Protected" />
+          <Modifier startLine="1" startCol="26" endLine="1" endCol="33" type="Friend" />
+          <Modifier startLine="1" startCol="33" endLine="1" endCol="41" type="Shadows" />
+        </ModifierCollection>
+        <Delegate line="1" col="41" />
+        <Sub line="1" col="50" />
+        <SimpleName startLine="1" startCol="54" endLine="1" endCol="57" escaped="False">Foo</SimpleName>
+      </DelegateSubDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>&lt;a&gt; Delegate Sub Foo</code>
+    <result>
+      <DelegateSubDeclaration startLine="1" startCol="1" endLine="1" endCol="21">
+        <AttributeCollection startLine="1" startCol="1" endLine="1" endCol="5">
+          <Attribute startLine="1" startCol="2" endLine="1" endCol="3" type="Regular">
+            <SimpleName startLine="1" startCol="2" endLine="1" endCol="3" escaped="False">a</SimpleName>
+          </Attribute>
+          <GreaterThan line="1" col="3" />
+        </AttributeCollection>
+        <Delegate line="1" col="5" />
+        <Sub line="1" col="14" />
+        <SimpleName startLine="1" startCol="18" endLine="1" endCol="21" escaped="False">Foo</SimpleName>
+      </DelegateSubDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>Delegate Function Foo() As Integer</code>
+    <result>
+      <DelegateFunctionDeclaration startLine="1" startCol="1" endLine="1" endCol="35">
+        <Delegate line="1" col="1" />
+        <Function line="1" col="10" />
+        <SimpleName startLine="1" startCol="19" endLine="1" endCol="22" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="22" endLine="1" endCol="25">
+          <RightParenthesis line="1" col="23" />
+        </ParameterCollection>
+        <As line="1" col="25" />
+        <IntrinsicType startLine="1" startCol="28" endLine="1" endCol="35" intrinsicType="Integer" />
+      </DelegateFunctionDeclaration>
+    </result>
+  </test>
+</scenario>

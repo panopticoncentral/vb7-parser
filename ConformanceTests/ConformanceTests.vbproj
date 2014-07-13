@@ -1,0 +1,443 @@
+<VisualStudioProject>
+    <VisualBasic
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{EBA54974-7325-4B62-8EFC-8B0AAB9B5856}"
+        SccProjectName = "$"
+        SccLocalPath = ".."
+        SccProvider = "MSSCCI:Workspaces"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = "Binocular.ico"
+                AssemblyKeyContainerName = ""
+                AssemblyName = "ConformanceTests"
+                AssemblyOriginatorKeyFile = ""
+                AssemblyOriginatorKeyMode = "None"
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "WinExe"
+                OptionCompare = "Binary"
+                OptionExplicit = "On"
+                OptionStrict = "On"
+                RootNamespace = "ConformanceTests"
+                StartupObject = "ConformanceTests.Main"
+            >
+                <Config
+                    Name = "Debug"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "true"
+                    DefineTrace = "true"
+                    DebugSymbols = "true"
+                    IncrementalBuild = "true"
+                    Optimize = "false"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "1"
+                />
+                <Config
+                    Name = "Release"
+                    BaseAddress = "285212672"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = ""
+                    DefineDebug = "false"
+                    DefineTrace = "true"
+                    DebugSymbols = "false"
+                    IncrementalBuild = "false"
+                    Optimize = "true"
+                    OutputPath = "bin\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "1"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "Parser"
+                    Project = "{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}"
+                    Package = "{F184B08F-C81C-45F6-A57F-5ABD9991F28F}"
+                />
+            </References>
+            <Imports>
+                <Import Namespace = "Microsoft.VisualBasic" />
+                <Import Namespace = "System" />
+                <Import Namespace = "System.Collections" />
+                <Import Namespace = "System.Diagnostics" />
+                <Import Namespace = "System.Windows.Forms" />
+                <Import Namespace = "System.Drawing" />
+            </Imports>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "Binocular.ico"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "License.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Main.vb"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Main.resx"
+                    DependentUpon = "Main.vb"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "TestHarness.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlErrorSerializer.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlTokenSerializer.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "XmlTreeSerializer.vb"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Tests\Attribute.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\TypeName.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\AddressOf.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\CallOrIndex.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\Casts.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\Instances.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\Literals.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\MemberAccess.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\New.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\Operators.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\Parenthesis.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Expression\SimpleNames.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Tests\Expression\TypeExpressions.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Tests\File\AssemblyAttribute.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\File\FileComments.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\File\Import.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\File\Namespace.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\File\Option.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\Constructors.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\Events.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\ExternalMethods.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\Fields.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\Handles.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\Implements.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\MemberComments.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\Parameters.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\Properties.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Member\RegularMethods.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Preprocessor\ConditionalCompilation.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Preprocessor\ConditionalConstant.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Preprocessor\ExternalSource.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Preprocessor\PreprocessorComments.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Preprocessor\Region.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\Comments.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\DateLiterals.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\FloatingPointLiterals.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\Identifiers.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\IntegerLiterals.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\Keywords.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\LineContinuations.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\LineTerminators.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\Punctuators.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\StringLiterals.xml"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Scanner\TypeCharacters.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Arrays.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Assignments.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Blocks.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Branches.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Conditionals.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\EventHandlers.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Exceptions.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\ExpressionBlocks.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Invocations.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Locals.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\Loops.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Statement\StatementComments.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Type\Class.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Type\Delegate.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Type\Enumerations.xml"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "Tests\Type\Interface.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Type\Modules.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Type\Structure.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "Tests\Type\TypeComments.xml"
+                    SubType = "Code"
+                    BuildAction = "EmbeddedResource"
+                />
+            </Include>
+        </Files>
+    </VisualBasic>
+</VisualStudioProject>
+

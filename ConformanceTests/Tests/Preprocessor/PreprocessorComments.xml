@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="PreprocessorComments" type="file" description="Comments after preprocessing">
+  <test>
+    <code>
+      #Const x = True ' A comment
+      #If x Then ' A comment
+      #ElseIf y Then ' A comment
+      #Else ' A comment
+      #End If ' A comment
+    </code>
+    <result>
+      <File startLine="1" startCol="1" endLine="5" endCol="26" />
+    </result>
+  </test>
+  <test>
+    <code>
+      #ExternalSource("foo.vb",10) ' A comment
+      #End ExternalSource ' A comment
+    </code>
+    <result>
+      <File startLine="1" startCol="1" endLine="2" endCol="38" />
+    </result>
+  </test>
+  <test>
+    <code>
+      #Region "a" ' A comment
+      #End Region ' A comment
+    </code>
+    <result>
+      <File startLine="1" startCol="1" endLine="2" endCol="30" />
+    </result>
+  </test>
+</scenario>

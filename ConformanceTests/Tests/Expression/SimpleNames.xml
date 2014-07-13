@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="SimpleNames" type="expression" description="11.4.4 Simple Name Expressions">
+  <!-- Invalid identifiers -->
+  <test>
+    <code>1abc</code>
+  </test>
+  <test>
+    <code>option</code>
+  </test>
+  <!-- Valid identifiers -->
+  <test>
+    <code>_abc</code>
+  </test>
+  <test>
+    <code>[_abc]</code>
+  </test>
+  <test>
+    <code>a1b0c</code>
+  </test>
+  <test>
+    <code>[a1b0c]</code>
+  </test>
+  <test>
+    <code>abc_</code>
+  </test>
+  <test>
+    <code>[abc_]</code>
+  </test>
+  <test>
+    <code>[option]</code>
+  </test>
+</scenario>

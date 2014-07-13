@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="Events" type="declaration" description="9.4 Events">
+  <!-- Invalid events -->
+  <test>
+    <code>Event</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="6">
+        <Event line="1" col="1" />
+        <SimpleName isBad="True" startLine="1" startCol="6" endLine="1" endCol="6" escaped="False" />
+      </EventDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="6" endLine="1" endCol="6">error 23 (6,1) - (6,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>Event x(</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="9">
+        <Event line="1" col="1" />
+        <SimpleName startLine="1" startCol="7" endLine="1" endCol="8" escaped="False">x</SimpleName>
+        <ParameterCollection startLine="1" startCol="8" endLine="1" endCol="9">
+          <Parameter startLine="1" startCol="9" endLine="1" endCol="9">
+            <VariableName startLine="1" startCol="9" endLine="1" endCol="9">
+              <SimpleName isBad="True" startLine="1" startCol="9" endLine="1" endCol="9" escaped="False" />
+            </VariableName>
+          </Parameter>
+        </ParameterCollection>
+      </EventDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="9" endLine="1" endCol="9">error 23 (9,1) - (9,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>Event x)</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="8">
+        <Event line="1" col="1" />
+        <SimpleName startLine="1" startCol="7" endLine="1" endCol="8" escaped="False">x</SimpleName>
+      </EventDeclaration>
+    </result>
+    <errors>
+      <ExpectedEndOfStatement startLine="1" startCol="8" endLine="1" endCol="9">error 39 (8,1) - (9,1): End of statement expected.</ExpectedEndOfStatement>
+    </errors>
+  </test>
+  <test>
+    <code>Overridable Event x</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="20">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="13">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="13" type="Overridable" />
+        </ModifierCollection>
+        <Event line="1" col="13" />
+        <SimpleName startLine="1" startCol="19" endLine="1" endCol="20" escaped="False">x</SimpleName>
+      </EventDeclaration>
+    </result>
+    <errors>
+      <InvalidModifier startLine="1" startCol="1" endLine="1" endCol="13">error 94 (1,1) - (13,1): Modifier is not valid on this declaration type.</InvalidModifier>
+    </errors>
+  </test>
+  <test>
+    <code>Public &lt;a&gt; Event x</code>
+    <result>
+      <AttributeDeclaration startLine="1" startCol="8" endLine="1" endCol="12">
+        <AttributeCollection startLine="1" startCol="8" endLine="1" endCol="12">
+          <Attribute startLine="1" startCol="9" endLine="1" endCol="10" type="Regular">
+            <SimpleName startLine="1" startCol="9" endLine="1" endCol="10" escaped="False">a</SimpleName>
+          </Attribute>
+          <GreaterThan line="1" col="10" />
+        </AttributeCollection>
+      </AttributeDeclaration>
+    </result>
+    <errors>
+      <IncorrectAttributeType startLine="1" startCol="9" endLine="1" endCol="10">error 92 (9,1) - (10,1): Attribute of this type is not allowed here.</IncorrectAttributeType>
+    </errors>
+  </test>
+  <test>
+    <code>Event x As</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="11">
+        <Event line="1" col="1" />
+        <SimpleName startLine="1" startCol="7" endLine="1" endCol="8" escaped="False">x</SimpleName>
+        <As line="1" col="9" />
+        <NamedType isBad="True" startLine="1" startCol="11" endLine="1" endCol="11">
+          <SimpleName isBad="True" startLine="1" startCol="11" endLine="1" endCol="11" escaped="False" />
+        </NamedType>
+      </EventDeclaration>
+    </result>
+    <errors>
+      <ExpectedType startLine="1" startCol="11" endLine="1" endCol="11">error 22 (11,1) - (11,1): Type expected.</ExpectedType>
+    </errors>
+  </test>
+  <!-- Valid events -->
+  <test>
+    <code>Event x As y</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="13">
+        <Event line="1" col="1" />
+        <SimpleName startLine="1" startCol="7" endLine="1" endCol="8" escaped="False">x</SimpleName>
+        <As line="1" col="9" />
+        <NamedType startLine="1" startCol="12" endLine="1" endCol="13">
+          <SimpleName startLine="1" startCol="12" endLine="1" endCol="13" escaped="False">y</SimpleName>
+        </NamedType>
+      </EventDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>Event x(ByVal y As z)</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="22">
+        <Event line="1" col="1" />
+        <SimpleName startLine="1" startCol="7" endLine="1" endCol="8" escaped="False">x</SimpleName>
+        <ParameterCollection startLine="1" startCol="8" endLine="1" endCol="22">
+          <Parameter startLine="1" startCol="9" endLine="1" endCol="21">
+            <ModifierCollection startLine="1" startCol="9" endLine="1" endCol="15">
+              <Modifier startLine="1" startCol="9" endLine="1" endCol="15" type="ByVal" />
+            </ModifierCollection>
+            <VariableName startLine="1" startCol="15" endLine="1" endCol="17">
+              <SimpleName startLine="1" startCol="15" endLine="1" endCol="16" escaped="False">y</SimpleName>
+            </VariableName>
+            <As line="1" col="17" />
+            <NamedType startLine="1" startCol="20" endLine="1" endCol="21">
+              <SimpleName startLine="1" startCol="20" endLine="1" endCol="21" escaped="False">z</SimpleName>
+            </NamedType>
+          </Parameter>
+          <RightParenthesis line="1" col="21" />
+        </ParameterCollection>
+      </EventDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>Public Private Protected Friend Shadows Shared Event x As y</code>
+    <result>
+      <EventDeclaration startLine="1" startCol="1" endLine="1" endCol="60">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="48">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="8" type="Public" />
+          <Modifier startLine="1" startCol="8" endLine="1" endCol="16" type="Private" />
+          <Modifier startLine="1" startCol="16" endLine="1" endCol="26" type="Protected" />
+          <Modifier startLine="1" startCol="26" endLine="1" endCol="33" type="Friend" />
+          <Modifier startLine="1" startCol="33" endLine="1" endCol="41" type="Shadows" />
+          <Modifier startLine="1" startCol="41" endLine="1" endCol="48" type="Shared" />
+        </ModifierCollection>
+        <Event line="1" col="48" />
+        <SimpleName startLine="1" startCol="54" endLine="1" endCol="55" escaped="False">x</SimpleName>
+        <As line="1" col="56" />
+        <NamedType startLine="1" startCol="59" endLine="1" endCol="60">
+          <SimpleName startLine="1" startCol="59" endLine="1" endCol="60" escaped="False">y</SimpleName>
+        </NamedType>
+      </EventDeclaration>
+    </result>
+  </test>
+</scenario>

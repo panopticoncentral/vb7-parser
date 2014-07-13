@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="TypeExpressions" type="expression" description="11.5 Type Expressions">
+  <!-- This covers 11.5.1, 11.5.2 and 11.5.3 -->
+  <!-- Invalid GetType -->
+  <test>
+    <code>GetType</code>
+  </test>
+  <test>
+    <code>GetType(</code>
+  </test>
+  <test>
+    <code>GetType)</code>
+  </test>
+  <test>
+    <code>GetType()</code>
+  </test>
+  <test>
+    <code>GetType(Nothing)</code>
+  </test>
+  <test>
+    <code>GetType(10)</code>
+  </test>
+  <!-- Valid GetType -->
+  <test>
+    <code>GetType(x)</code>
+  </test>
+  <test>
+    <code>GetType(Integer)</code>
+  </test>
+  <test>
+    <code>GetType(System.Int32)</code>
+  </test>
+  <!-- Invalid TypeOf...Is -->
+  <test>
+    <code>TypeOf</code>
+  </test>
+  <test>
+    <code>TypeOf Is</code>
+  </test>
+  <test>
+    <code>TypeOf x Is</code>
+  </test>
+  <test>
+    <code>TypeOf x Is 10</code>
+  </test>
+  <test>
+    <code>TypeOf x Is Nothing</code>
+  </test>
+  <test>
+    <code>TypeOf Integer Is Integer</code>
+  </test>
+  <!-- Valid TypeOf...Is -->
+  <test>
+    <code>TypeOf x Is y</code>
+  </test>
+  <test>
+    <code>TypeOf x Is Integer</code>
+  </test>
+  <test>
+    <code>TypeOf x Is System.Int32</code>
+  </test>
+  <!-- Invalid Is -->
+  <test>
+    <code>Is</code>
+  </test>
+  <test>
+    <code>x Is</code>
+  </test>
+  <test>
+    <code>Is y</code>
+  </test>
+  <!-- Valid Is -->
+  <test>
+    <code>x Is y</code>
+  </test>
+</scenario>

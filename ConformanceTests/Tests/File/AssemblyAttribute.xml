@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="AssemblyAttribute" type="file" description="6 Source Files">
+  <!-- Invalid imports -->
+  <test>
+    <code>
+      Class Test
+      End Class
+      &lt;Assembly:a&gt;
+	</code>
+    <result>
+      <File startLine="1" startCol="1" endLine="3" endCol="19">
+        <DeclarationCollection startLine="1" startCol="1" endLine="3" endCol="19">
+          <ClassDeclaration startLine="1" startCol="1" endLine="2" endCol="16">
+            <Class line="1" col="1" />
+            <SimpleName startLine="1" startCol="7" endLine="1" endCol="11" escaped="False">Test</SimpleName>
+            <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="16" endType="Class">
+              <Class line="2" col="11" />
+            </EndBlockDeclaration>
+          </ClassDeclaration>
+          <AttributeDeclaration startLine="3" startCol="7" endLine="3" endCol="19">
+            <AttributeCollection startLine="3" startCol="7" endLine="3" endCol="19">
+              <Attribute startLine="3" startCol="8" endLine="3" endCol="18" type="Assembly">
+                <Colon line="3" col="16" />
+                <Assembly line="3" col="8" />
+                <SimpleName startLine="3" startCol="17" endLine="3" endCol="18" escaped="False">a</SimpleName>
+              </Attribute>
+              <GreaterThan line="3" col="18" />
+            </AttributeCollection>
+          </AttributeDeclaration>
+        </DeclarationCollection>
+      </File>
+    </result>
+    <errors>
+      <AttributesStatementWrongOrder startLine="3" startCol="7" endLine="3" endCol="19">error 128 (7,3) - (19,3): Assembly or Module attribute statements must precede any declarations in a file.</AttributesStatementWrongOrder>
+    </errors>
+  </test>
+</scenario>

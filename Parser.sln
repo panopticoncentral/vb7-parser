@@ -1,0 +1,44 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Parser", "Parser.vbproj", "{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConformanceTests", "ConformanceTests\ConformanceTests.vbproj", "{EBA54974-7325-4B62-8EFC-8B0AAB9B5856}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectName0 = $
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Workspaces
+		CanCheckoutShared = false
+		SolutionUniqueID = {9F50A663-7C46-4512-BDED-9E007E54AEAA}
+		SccProjectUniqueName1 = Parser.vbproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectUniqueName2 = ConformanceTests\\ConformanceTests.vbproj
+		SccLocalPath2 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection2 = ConformanceTests\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}.Debug.ActiveCfg = Debug|.NET
+		{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}.Debug.Build.0 = Debug|.NET
+		{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}.Release.ActiveCfg = Release|.NET
+		{57A0B340-BDA4-4DE3-B449-52B8C51D84B8}.Release.Build.0 = Release|.NET
+		{EBA54974-7325-4B62-8EFC-8B0AAB9B5856}.Debug.ActiveCfg = Debug|.NET
+		{EBA54974-7325-4B62-8EFC-8B0AAB9B5856}.Debug.Build.0 = Debug|.NET
+		{EBA54974-7325-4B62-8EFC-8B0AAB9B5856}.Release.ActiveCfg = Release|.NET
+		{EBA54974-7325-4B62-8EFC-8B0AAB9B5856}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

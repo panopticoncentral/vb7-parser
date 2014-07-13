@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="LineTerminators" type="token" description="2.1.1 Line Terminators">
+  <!-- Line terminators in order: LF, CR, CRLF, Line sep, Paragraph sep -->
+  <test>
+    <code>a
+b</code>
+    <result>
+      <Identifier startLine="1" startCol="1" endLine="1" endCol="2" escaped="False">a</Identifier>
+      <LineTerminator startLine="1" startCol="2" endLine="1" endCol="3" />
+      <Identifier startLine="2" startCol="1" endLine="2" endCol="2" escaped="False">b</Identifier>
+    </result>
+  </test>
+  <test>
+    <code>ab</code>
+    <result>
+      <Identifier startLine="1" startCol="1" endLine="1" endCol="2" escaped="False">a</Identifier>
+      <LineTerminator startLine="1" startCol="2" endLine="1" endCol="3" />
+      <Identifier startLine="2" startCol="1" endLine="2" endCol="2" escaped="False">b</Identifier>
+    </result>
+  </test>
+  <test>
+    <code>a
+b</code>
+    <result>
+      <Identifier startLine="1" startCol="1" endLine="1" endCol="2" escaped="False">a</Identifier>
+      <LineTerminator startLine="1" startCol="2" endLine="1" endCol="4" />
+      <Identifier startLine="2" startCol="1" endLine="2" endCol="2" escaped="False">b</Identifier>
+    </result>
+  </test>
+  <test>
+    <code>a b</code>
+    <result>
+      <Identifier startLine="1" startCol="1" endLine="1" endCol="2" escaped="False">a</Identifier>
+      <LineTerminator startLine="1" startCol="2" endLine="1" endCol="3" />
+      <Identifier startLine="2" startCol="1" endLine="2" endCol="2" escaped="False">b</Identifier>
+    </result>
+  </test>
+  <test>
+    <code>a b</code>
+    <result>
+      <Identifier startLine="1" startCol="1" endLine="1" endCol="2" escaped="False">a</Identifier>
+      <LineTerminator startLine="1" startCol="2" endLine="1" endCol="3" />
+      <Identifier startLine="2" startCol="1" endLine="2" endCol="2" escaped="False">b</Identifier>
+    </result>
+  </test>
+</scenario>

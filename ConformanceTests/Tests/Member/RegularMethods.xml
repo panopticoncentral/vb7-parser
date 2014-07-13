@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="RegularMethods" type="declaration" description="9.2.1 Regular Method Declarations">
+  <!-- Invalid methods -->
+  <test>
+    <code>Sub</code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="1" endCol="4">
+        <Sub line="1" col="1" />
+        <SimpleName isBad="True" startLine="1" startCol="4" endLine="1" endCol="4" escaped="False" />
+      </SubDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="4" endLine="1" endCol="4">error 23 (4,1) - (4,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>Sub : End Sub</code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="1" endCol="14">
+        <Sub line="1" col="1" />
+        <SimpleName isBad="True" startLine="1" startCol="5" endLine="1" endCol="6" escaped="False" />
+        <StatementCollection startLine="1" startCol="7" endLine="1" endCol="10">
+          <Colon line="1" col="5" />
+        </StatementCollection>
+        <EndBlockDeclaration startLine="1" startCol="7" endLine="1" endCol="14" endType="Sub">
+          <Sub line="1" col="11" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="5" endLine="1" endCol="6">error 23 (5,1) - (6,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>Sub Foo : End Sub</code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="1" endCol="18">
+        <Sub line="1" col="1" />
+        <SimpleName startLine="1" startCol="5" endLine="1" endCol="8" escaped="False">Foo</SimpleName>
+        <StatementCollection startLine="1" startCol="11" endLine="1" endCol="14">
+          <Colon line="1" col="9" />
+        </StatementCollection>
+        <EndBlockDeclaration startLine="1" startCol="11" endLine="1" endCol="18" endType="Sub">
+          <Sub line="1" col="15" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+    <errors>
+      <MethodBodyNotAtLineStart startLine="1" startCol="9" endLine="1" endCol="10">error 99 (9,1) - (10,1): First statement of a method body cannot be on the same line as the method declaration.</MethodBodyNotAtLineStart>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Public &lt;a&gt; Sub foo
+      End Sub
+    </code>
+    <result>
+      <AttributeDeclaration startLine="1" startCol="8" endLine="1" endCol="12">
+        <AttributeCollection startLine="1" startCol="8" endLine="1" endCol="12">
+          <Attribute startLine="1" startCol="9" endLine="1" endCol="10" type="Regular">
+            <SimpleName startLine="1" startCol="9" endLine="1" endCol="10" escaped="False">a</SimpleName>
+          </Attribute>
+          <GreaterThan line="1" col="10" />
+        </AttributeCollection>
+      </AttributeDeclaration>
+    </result>
+    <errors>
+      <IncorrectAttributeType startLine="1" startCol="9" endLine="1" endCol="10">error 92 (9,1) - (10,1): Attribute of this type is not allowed here.</IncorrectAttributeType>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Sub foo(
+      End Sub
+    </code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="2" endCol="14">
+        <Sub line="1" col="1" />
+        <SimpleName startLine="1" startCol="5" endLine="1" endCol="8" escaped="False">foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="8" endLine="1" endCol="9">
+          <Parameter startLine="1" startCol="9" endLine="1" endCol="9">
+            <VariableName startLine="1" startCol="9" endLine="1" endCol="9">
+              <SimpleName isBad="True" startLine="1" startCol="9" endLine="1" endCol="11" escaped="False" />
+            </VariableName>
+          </Parameter>
+        </ParameterCollection>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="14" endType="Sub">
+          <Sub line="2" col="11" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="9" endLine="1" endCol="11">error 23 (9,1) - (11,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Sub foo)
+      End Sub
+    </code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="2" endCol="14">
+        <Sub line="1" col="1" />
+        <SimpleName startLine="1" startCol="5" endLine="1" endCol="8" escaped="False">foo</SimpleName>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="14" endType="Sub">
+          <Sub line="2" col="11" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+    <errors>
+      <ExpectedEndOfStatement startLine="1" startCol="8" endLine="1" endCol="9">error 39 (8,1) - (9,1): End of statement expected.</ExpectedEndOfStatement>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Sub Public Foo
+      End Sub
+    </code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="2" endCol="14">
+        <Sub line="1" col="1" />
+        <SimpleName startLine="1" startCol="5" endLine="1" endCol="11" escaped="False">Public</SimpleName>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="14" endType="Sub">
+          <Sub line="2" col="11" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+    <errors>
+      <InvalidUseOfKeyword startLine="1" startCol="5" endLine="1" endCol="11">error 24 (5,1) - (11,1): Invalid use of keyword.</InvalidUseOfKeyword>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Sub Foo() As Integer
+      End Sub
+    </code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="2" endCol="14">
+        <Sub line="1" col="1" />
+        <SimpleName startLine="1" startCol="5" endLine="1" endCol="8" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="8" endLine="1" endCol="11">
+          <RightParenthesis line="1" col="9" />
+        </ParameterCollection>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="14" endType="Sub">
+          <Sub line="2" col="11" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+    <errors>
+      <ExpectedEndOfStatement startLine="1" startCol="11" endLine="1" endCol="13">error 39 (11,1) - (13,1): End of statement expected.</ExpectedEndOfStatement>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="1" endCol="9">
+        <Function line="1" col="1" />
+        <SimpleName isBad="True" startLine="1" startCol="9" endLine="1" endCol="9" escaped="False" />
+      </FunctionDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="9" endLine="1" endCol="9">error 23 (9,1) - (9,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Function
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <Function line="1" col="1" />
+        <SimpleName isBad="True" startLine="1" startCol="9" endLine="1" endCol="11" escaped="False" />
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="9" endLine="1" endCol="11">error 23 (9,1) - (11,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Function Foo As
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <Function line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="13" escaped="False">Foo</SimpleName>
+        <As line="1" col="14" />
+        <NamedType isBad="True" startLine="1" startCol="16" endLine="1" endCol="16">
+          <SimpleName isBad="True" startLine="1" startCol="16" endLine="1" endCol="16" escaped="False" />
+        </NamedType>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+    <errors>
+      <ExpectedType startLine="1" startCol="16" endLine="1" endCol="18">error 22 (16,1) - (18,1): Type expected.</ExpectedType>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Public &lt;a&gt; Function foo
+      End Function
+    </code>
+    <result>
+      <AttributeDeclaration startLine="1" startCol="8" endLine="1" endCol="12">
+        <AttributeCollection startLine="1" startCol="8" endLine="1" endCol="12">
+          <Attribute startLine="1" startCol="9" endLine="1" endCol="10" type="Regular">
+            <SimpleName startLine="1" startCol="9" endLine="1" endCol="10" escaped="False">a</SimpleName>
+          </Attribute>
+          <GreaterThan line="1" col="10" />
+        </AttributeCollection>
+      </AttributeDeclaration>
+    </result>
+    <errors>
+      <IncorrectAttributeType startLine="1" startCol="9" endLine="1" endCol="10">error 92 (9,1) - (10,1): Attribute of this type is not allowed here.</IncorrectAttributeType>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Public Function Foo As Bar &lt;a&gt;
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="8">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="8" type="Public" />
+        </ModifierCollection>
+        <Function line="1" col="8" />
+        <SimpleName startLine="1" startCol="17" endLine="1" endCol="20" escaped="False">Foo</SimpleName>
+        <As line="1" col="21" />
+        <NamedType startLine="1" startCol="24" endLine="1" endCol="27">
+          <SimpleName startLine="1" startCol="24" endLine="1" endCol="27" escaped="False">Bar</SimpleName>
+        </NamedType>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+    <errors>
+      <ExpectedEndOfStatement startLine="1" startCol="28" endLine="1" endCol="29">error 39 (28,1) - (29,1): End of statement expected.</ExpectedEndOfStatement>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Function foo(
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <Function line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="13" escaped="False">foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="13" endLine="1" endCol="14">
+          <Parameter startLine="1" startCol="14" endLine="1" endCol="14">
+            <VariableName startLine="1" startCol="14" endLine="1" endCol="14">
+              <SimpleName isBad="True" startLine="1" startCol="14" endLine="1" endCol="16" escaped="False" />
+            </VariableName>
+          </Parameter>
+        </ParameterCollection>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+    <errors>
+      <ExpectedIdentifier startLine="1" startCol="14" endLine="1" endCol="16">error 23 (14,1) - (16,1): Expected identifier.</ExpectedIdentifier>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Function foo)
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <Function line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="13" escaped="False">foo</SimpleName>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+    <errors>
+      <ExpectedEndOfStatement startLine="1" startCol="13" endLine="1" endCol="14">error 39 (13,1) - (14,1): End of statement expected.</ExpectedEndOfStatement>
+    </errors>
+  </test>
+  <test>
+    <code>
+      Function Public Foo
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <Function line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="16" escaped="False">Public</SimpleName>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+    <errors>
+      <InvalidUseOfKeyword startLine="1" startCol="10" endLine="1" endCol="16">error 24 (10,1) - (16,1): Invalid use of keyword.</InvalidUseOfKeyword>
+    </errors>
+  </test>
+  <!-- Valid methods -->
+  <test>
+    <code>
+      Sub Foo()
+      End Sub
+    </code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="2" endCol="14">
+        <Sub line="1" col="1" />
+        <SimpleName startLine="1" startCol="5" endLine="1" endCol="8" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="8" endLine="1" endCol="10">
+          <RightParenthesis line="1" col="9" />
+        </ParameterCollection>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="14" endType="Sub">
+          <Sub line="2" col="11" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>
+      Public Private Protected Friend Shadows Shared Overridable NotOverridable MustOverride Overrides Overloads Sub Foo()
+      End Sub
+    </code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="1" endCol="117">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="108">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="8" type="Public" />
+          <Modifier startLine="1" startCol="8" endLine="1" endCol="16" type="Private" />
+          <Modifier startLine="1" startCol="16" endLine="1" endCol="26" type="Protected" />
+          <Modifier startLine="1" startCol="26" endLine="1" endCol="33" type="Friend" />
+          <Modifier startLine="1" startCol="33" endLine="1" endCol="41" type="Shadows" />
+          <Modifier startLine="1" startCol="41" endLine="1" endCol="48" type="Shared" />
+          <Modifier startLine="1" startCol="48" endLine="1" endCol="60" type="Overridable" />
+          <Modifier startLine="1" startCol="60" endLine="1" endCol="75" type="NotOverridable" />
+          <Modifier startLine="1" startCol="75" endLine="1" endCol="88" type="MustOverride" />
+          <Modifier startLine="1" startCol="88" endLine="1" endCol="98" type="Overrides" />
+          <Modifier startLine="1" startCol="98" endLine="1" endCol="108" type="Overloads" />
+        </ModifierCollection>
+        <Sub line="1" col="108" />
+        <SimpleName startLine="1" startCol="112" endLine="1" endCol="115" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="115" endLine="1" endCol="117">
+          <RightParenthesis line="1" col="116" />
+        </ParameterCollection>
+      </SubDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>
+      &lt;a&gt; Sub Foo()
+      End Sub
+    </code>
+    <result>
+      <SubDeclaration startLine="1" startCol="1" endLine="2" endCol="14">
+        <AttributeCollection startLine="1" startCol="1" endLine="1" endCol="5">
+          <Attribute startLine="1" startCol="2" endLine="1" endCol="3" type="Regular">
+            <SimpleName startLine="1" startCol="2" endLine="1" endCol="3" escaped="False">a</SimpleName>
+          </Attribute>
+          <GreaterThan line="1" col="3" />
+        </AttributeCollection>
+        <Sub line="1" col="5" />
+        <SimpleName startLine="1" startCol="9" endLine="1" endCol="12" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="12" endLine="1" endCol="14">
+          <RightParenthesis line="1" col="13" />
+        </ParameterCollection>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="14" endType="Sub">
+          <Sub line="2" col="11" />
+        </EndBlockDeclaration>
+      </SubDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>
+      Function Foo() As Integer
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <Function line="1" col="1" />
+        <SimpleName startLine="1" startCol="10" endLine="1" endCol="13" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="13" endLine="1" endCol="16">
+          <RightParenthesis line="1" col="14" />
+        </ParameterCollection>
+        <As line="1" col="16" />
+        <IntrinsicType startLine="1" startCol="19" endLine="1" endCol="26" intrinsicType="Integer" />
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>
+      Public Function Foo As &lt;a&gt; Bar
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="8">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="8" type="Public" />
+        </ModifierCollection>
+        <Function line="1" col="8" />
+        <SimpleName startLine="1" startCol="17" endLine="1" endCol="20" escaped="False">Foo</SimpleName>
+        <As line="1" col="21" />
+        <AttributeCollection startLine="1" startCol="24" endLine="1" endCol="28">
+          <Attribute startLine="1" startCol="25" endLine="1" endCol="26" type="Regular">
+            <SimpleName startLine="1" startCol="25" endLine="1" endCol="26" escaped="False">a</SimpleName>
+          </Attribute>
+          <GreaterThan line="1" col="26" />
+        </AttributeCollection>
+        <NamedType startLine="1" startCol="28" endLine="1" endCol="31">
+          <SimpleName startLine="1" startCol="28" endLine="1" endCol="31" escaped="False">Bar</SimpleName>
+        </NamedType>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>
+      Public Private Protected Friend Shadows Shared Overridable NotOverridable MustOverride Overrides Overloads Function Foo()
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="1" endCol="122">
+        <ModifierCollection startLine="1" startCol="1" endLine="1" endCol="108">
+          <Modifier startLine="1" startCol="1" endLine="1" endCol="8" type="Public" />
+          <Modifier startLine="1" startCol="8" endLine="1" endCol="16" type="Private" />
+          <Modifier startLine="1" startCol="16" endLine="1" endCol="26" type="Protected" />
+          <Modifier startLine="1" startCol="26" endLine="1" endCol="33" type="Friend" />
+          <Modifier startLine="1" startCol="33" endLine="1" endCol="41" type="Shadows" />
+          <Modifier startLine="1" startCol="41" endLine="1" endCol="48" type="Shared" />
+          <Modifier startLine="1" startCol="48" endLine="1" endCol="60" type="Overridable" />
+          <Modifier startLine="1" startCol="60" endLine="1" endCol="75" type="NotOverridable" />
+          <Modifier startLine="1" startCol="75" endLine="1" endCol="88" type="MustOverride" />
+          <Modifier startLine="1" startCol="88" endLine="1" endCol="98" type="Overrides" />
+          <Modifier startLine="1" startCol="98" endLine="1" endCol="108" type="Overloads" />
+        </ModifierCollection>
+        <Function line="1" col="108" />
+        <SimpleName startLine="1" startCol="117" endLine="1" endCol="120" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="120" endLine="1" endCol="122">
+          <RightParenthesis line="1" col="121" />
+        </ParameterCollection>
+      </FunctionDeclaration>
+    </result>
+  </test>
+  <test>
+    <code>
+      &lt;a&gt; Function Foo()
+      End Function
+    </code>
+    <result>
+      <FunctionDeclaration startLine="1" startCol="1" endLine="2" endCol="19">
+        <AttributeCollection startLine="1" startCol="1" endLine="1" endCol="5">
+          <Attribute startLine="1" startCol="2" endLine="1" endCol="3" type="Regular">
+            <SimpleName startLine="1" startCol="2" endLine="1" endCol="3" escaped="False">a</SimpleName>
+          </Attribute>
+          <GreaterThan line="1" col="3" />
+        </AttributeCollection>
+        <Function line="1" col="5" />
+        <SimpleName startLine="1" startCol="14" endLine="1" endCol="17" escaped="False">Foo</SimpleName>
+        <ParameterCollection startLine="1" startCol="17" endLine="1" endCol="19">
+          <RightParenthesis line="1" col="18" />
+        </ParameterCollection>
+        <EndBlockDeclaration startLine="2" startCol="7" endLine="2" endCol="19" endType="Function">
+          <Function line="2" col="11" />
+        </EndBlockDeclaration>
+      </FunctionDeclaration>
+    </result>
+  </test>
+</scenario>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario name="FileComments" type="file" description="Comments after file declarations">
+  <test>
+    <code>
+        ' A comment
+        ' A comment
+        ' A comment
+    </code>
+    <result>
+      <File startLine="1" startCol="1" endLine="3" endCol="20">
+        <DeclarationCollection startLine="1" startCol="1" endLine="3" endCol="20">
+          <EmptyDeclaration startLine="1" startCol="1" endLine="3" endCol="20">
+            <Comment startLine="1" startCol="1" endLine="1" endCol="12" isRem="False"> A comment</Comment>
+            <Comment startLine="2" startCol="9" endLine="2" endCol="20" isRem="False"> A comment</Comment>
+            <Comment startLine="3" startCol="9" endLine="3" endCol="20" isRem="False"> A comment</Comment>
+          </EmptyDeclaration>
+        </DeclarationCollection>
+      </File>
+    </result>
+  </test>
+  <test>
+    <code>
+      Option Strict On ' A comment
+      Imports x ' A comment
+      &lt;assembly:b()&gt; ' A comment
+      Namespace Test ' A comment
+      End Namespace ' A comment
+    </code>
+    <result>
+      <File startLine="1" startCol="1" endLine="5" endCol="32">
+        <DeclarationCollection startLine="1" startCol="1" endLine="5" endCol="32">
+          <OptionDeclaration startLine="1" startCol="1" endLine="1" endCol="18" type="StrictOn">
+            <Comment startLine="1" startCol="18" endLine="1" endCol="29" isRem="False"> A comment</Comment>
+            <Strict line="1" col="8" />
+            <On line="1" col="15" />
+          </OptionDeclaration>
+          <ImportsDeclaration startLine="2" startCol="7" endLine="2" endCol="17">
+            <Comment startLine="2" startCol="17" endLine="2" endCol="28" isRem="False"> A comment</Comment>
+            <ImportCollection startLine="2" startCol="15" endLine="2" endCol="17">
+              <NameImport startLine="2" startCol="15" endLine="2" endCol="17">
+                <SimpleName startLine="2" startCol="15" endLine="2" endCol="16" escaped="False">x</SimpleName>
+              </NameImport>
+            </ImportCollection>
+          </ImportsDeclaration>
+          <AttributeDeclaration startLine="3" startCol="7" endLine="3" endCol="22">
+            <Comment startLine="3" startCol="22" endLine="3" endCol="33" isRem="False"> A comment</Comment>
+            <AttributeCollection startLine="3" startCol="7" endLine="3" endCol="22">
+              <Attribute startLine="3" startCol="8" endLine="3" endCol="20" type="Assembly">
+                <Colon line="3" col="16" />
+                <Assembly line="3" col="8" />
+                <SimpleName startLine="3" startCol="17" endLine="3" endCol="18" escaped="False">b</SimpleName>
+                <ArgumentCollection startLine="3" startCol="18" endLine="3" endCol="20">
+                  <RightParenthesis line="3" col="19" />
+                </ArgumentCollection>
+              </Attribute>
+              <GreaterThan line="3" col="20" />
+            </AttributeCollection>
+          </AttributeDeclaration>
+          <NamespaceDeclaration startLine="4" startCol="7" endLine="5" endCol="32">
+            <Comment startLine="4" startCol="22" endLine="4" endCol="33" isRem="False"> A comment</Comment>
+            <Namespace line="4" col="7" />
+            <SimpleName startLine="4" startCol="17" endLine="4" endCol="21" escaped="False">Test</SimpleName>
+            <EndBlockDeclaration startLine="5" startCol="7" endLine="5" endCol="21" endType="Namespace">
+              <Comment startLine="5" startCol="21" endLine="5" endCol="32" isRem="False"> A comment</Comment>
+              <Namespace line="5" col="11" />
+            </EndBlockDeclaration>
+          </NamespaceDeclaration>
+        </DeclarationCollection>
+      </File>
+    </result>
+  </test>
+</scenario>
